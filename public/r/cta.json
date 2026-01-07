@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta",
+  "title": "CTA",
+  "registryDependencies": [
+    "https://brutalui.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/cta.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype CtaProps = {\n  title?: string\n  description?: string\n  primaryAction?: { label: string; href: string }\n  secondaryAction?: { label: string; href: string }\n  className?: string\n}\n\nexport default function Cta({\n  title = \"Ready to go brutal?\",\n  description = \"Drop these blocks into your next page and ship with confidence.\",\n  primaryAction = { label: \"Get started\", href: \"/docs\" },\n  secondaryAction = { label: \"View components\", href: \"/docs/accordion\" },\n  className,\n}: CtaProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-main px-6 py-10 text-main-foreground shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between\">\n        <div className=\"space-y-3\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"max-w-2xl text-base sm:text-lg\">{description}</p>\n        </div>\n        <div className=\"flex flex-wrap gap-3\">\n          <Button asChild variant=\"neutral\">\n            <a href={primaryAction.href}>{primaryAction.label}</a>\n          </Button>\n          <Button asChild variant=\"reverse\">\n            <a href={secondaryAction.href}>{secondaryAction.label}</a>\n          </Button>\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/cta.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

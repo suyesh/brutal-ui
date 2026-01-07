@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "nlabel",
+  "dependencies": [
+    "@radix-ui/react-label"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/label.tsx",
+      "content": "\"use client\"\n\nimport * as LabelPrimitive from \"@radix-ui/react-label\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({\n  className,\n  ...props\n}: React.ComponentProps<typeof LabelPrimitive.Root>) {\n  return (\n    <LabelPrimitive.Root\n      data-slot=\"label\"\n      className={cn(\n        \"text-sm font-heading leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "highlighted-quote",
+  "title": "Highlighted quote",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/highlighted-quote.tsx",
+      "content": "import { Quote } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype HighlightedQuoteProps = {\n  quote?: string\n  name?: string\n  role?: string\n  className?: string\n}\n\nexport default function HighlightedQuote({\n  quote = \"BrutalUI gave us the confidence to go bold without losing clarity.\",\n  name = \"Aria James\",\n  role = \"Brand Designer\",\n  className,\n}: HighlightedQuoteProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-main px-6 py-10 text-main-foreground shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"mx-auto flex max-w-3xl flex-col gap-6\">\n        <div className=\"flex size-12 items-center justify-center rounded-base border-2 border-border bg-background text-foreground\">\n          <Quote className=\"size-5\" />\n        </div>\n        <blockquote className=\"text-2xl sm:text-3xl font-heading leading-snug\">\n          “{quote}”\n        </blockquote>\n        <div>\n          <p className=\"font-heading text-lg\">{name}</p>\n          <p className=\"text-sm text-main-foreground/80\">{role}</p>\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/highlighted-quote.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

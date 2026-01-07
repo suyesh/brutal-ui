@@ -1,0 +1,31 @@
+---
+title: Toast
+description: Displays transient notifications.
+shadcnDocsLink: https://ui.shadcn.com/docs/components/toast
+---
+
+<ComponentPreview component="toast">
+```tsx file=<rootDir>/src/examples/ui/toast.tsx
+  ```
+</ComponentPreview>
+
+## Installation
+
+<Installation component="toast">
+  ```tsx file=<rootDir>/src/components/ui/toast.tsx
+  ```
+  ```tsx file=<rootDir>/src/components/ui/toaster.tsx
+  ```
+  ```tsx file=<rootDir>/src/hooks/use-toast.ts
+  ```
+</Installation>
+
+## Usage
+
+```ts
+import { toast } from '@/hooks/use-toast'
+```
+
+```tsx
+toast({ title: "Scheduled" })
+```

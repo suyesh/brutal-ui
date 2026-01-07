@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-multi",
+  "title": "Footer multi",
+  "files": [
+    {
+      "path": "src/components/blocks/footer-multi.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\ntype FooterColumn = {\n  title: string\n  links: { label: string; href: string }[]\n}\n\ntype FooterMultiProps = {\n  brand?: string\n  description?: string\n  columns?: FooterColumn[]\n  className?: string\n}\n\nconst DEFAULT_COLUMNS: FooterColumn[] = [\n  {\n    title: \"Product\",\n    links: [\n      { label: \"Components\", href: \"/docs/accordion\" },\n      { label: \"Styling\", href: \"/styling\" },\n      { label: \"Changelog\", href: \"/docs/changelog\" },\n    ],\n  },\n  {\n    title: \"Resources\",\n    links: [\n      { label: \"Docs\", href: \"/docs\" },\n      { label: \"Stars\", href: \"/stars\" },\n      { label: \"Charts\", href: \"/charts\" },\n    ],\n  },\n  {\n    title: \"Company\",\n    links: [\n      { label: \"About\", href: \"/docs\" },\n      { label: \"Support\", href: \"/docs/resources\" },\n      { label: \"Status\", href: \"/docs\" },\n    ],\n  },\n]\n\nexport default function FooterMulti({\n  brand = \"BrutalUI\",\n  description = \"A brutalist component library for bold interfaces.\",\n  columns = DEFAULT_COLUMNS,\n  className,\n}: FooterMultiProps) {\n  return (\n    <footer\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"grid gap-8 lg:grid-cols-[1.2fr_1.8fr]\">\n        <div className=\"space-y-3\">\n          <p className=\"font-heading text-xl\">{brand}</p>\n          <p className=\"text-sm text-muted-foreground\">{description}</p>\n        </div>\n        <div className=\"grid gap-6 sm:grid-cols-2 lg:grid-cols-3\">\n          {columns.map((column) => (\n            <div key={column.title} className=\"space-y-3\">\n              <p className=\"text-xs uppercase tracking-wide text-muted-foreground\">\n                {column.title}\n              </p>\n              <div className=\"flex flex-col gap-2 text-sm font-heading\">\n                {column.links.map((link) => (\n                  <a key={link.label} href={link.href} className=\"underline\">\n                    {link.label}\n                  </a>\n                ))}\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </footer>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/footer-multi.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-upload",
+  "title": "File upload",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://brutalui.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/file-upload.tsx",
+      "content": " \"use client\"\n\nimport * as React from \"react\"\n\nimport { UploadCloud } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype FileUploadProps = {\n  title?: string\n  description?: string\n  accept?: string\n  className?: string\n}\n\nexport default function FileUpload({\n  title = \"Drag & drop upload\",\n  description = \"Drop your files here or click to upload. Max 25MB.\",\n  accept = \".png,.jpg,.pdf\",\n  className,\n}: FileUploadProps) {\n  const [files, setFiles] = React.useState<File[]>([])\n  const [isDragging, setIsDragging] = React.useState(false)\n  const inputId = React.useId()\n\n  const handleFiles = (list: FileList | null) => {\n    if (!list) return\n    setFiles(Array.from(list))\n  }\n\n  const handleDrop = (event: React.DragEvent<HTMLLabelElement>) => {\n    event.preventDefault()\n    setIsDragging(false)\n    handleFiles(event.dataTransfer.files)\n  }\n\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"space-y-6\">\n        <header className=\"space-y-2\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </header>\n        <label\n          htmlFor={inputId}\n          onDragOver={(event) => {\n            event.preventDefault()\n            setIsDragging(true)\n          }}\n          onDragLeave={() => setIsDragging(false)}\n          onDrop={handleDrop}\n          className={cn(\n            \"group flex cursor-pointer flex-col items-center justify-center gap-4 rounded-base border-2 border-dashed border-border bg-background p-10 text-center shadow-shadow transition-colors hover:bg-muted/40\",\n            isDragging && \"bg-muted/60\",\n          )}\n        >\n          <UploadCloud className=\"size-10 text-muted-foreground group-hover:text-foreground\" />\n          <div>\n            <p className=\"font-heading text-lg\">Drop files here</p>\n            <p className=\"text-sm text-muted-foreground\">\n              or click to browse ({accept})\n            </p>\n          </div>\n          <Button variant=\"reverse\" size=\"sm\" className=\"pointer-events-none\">\n            Choose files\n          </Button>\n          <input\n            id={inputId}\n            className=\"hidden\"\n            type=\"file\"\n            accept={accept}\n            onChange={(event) => handleFiles(event.target.files)}\n          />\n        </label>\n        {files.length > 0 && (\n          <div className=\"rounded-base border-2 border-border bg-background p-4 shadow-shadow\">\n            <p className=\"text-sm uppercase tracking-wide text-muted-foreground\">\n              Files\n            </p>\n            <ul className=\"mt-2 space-y-2 text-sm\">\n              {files.map((file) => (\n                <li key={file.name} className=\"flex items-center justify-between\">\n                  <span className=\"truncate\">{file.name}</span>\n                  <span className=\"text-muted-foreground\">\n                    {Math.ceil(file.size / 1024)}kb\n                  </span>\n                </li>\n              ))}\n            </ul>\n          </div>\n        )}\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/file-upload.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

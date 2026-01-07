@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-marquee",
+  "title": "Logo marquee",
+  "registryDependencies": [
+    "https://brutalui.dev/r/marquee.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/logo-marquee.tsx",
+      "content": "import Marquee from \"@/components/ui/marquee\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype LogoMarqueeProps = {\n  title?: string\n  items?: string[]\n  className?: string\n}\n\nconst DEFAULT_ITEMS = [\n  \"Antenna\",\n  \"Monolith\",\n  \"Brightline\",\n  \"Orbit\",\n  \"Synthwave\",\n  \"Pyramid\",\n]\n\nexport default function LogoMarquee({\n  title = \"Loved by teams that ship bold.\",\n  items = DEFAULT_ITEMS,\n  className,\n}: LogoMarqueeProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-8 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"space-y-6\">\n        <h2 className=\"font-heading text-xl sm:text-2xl\">{title}</h2>\n        <Marquee items={items} />\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/logo-marquee.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

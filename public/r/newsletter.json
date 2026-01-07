@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "newsletter",
+  "title": "Newsletter",
+  "registryDependencies": [
+    "https://brutalui.dev/r/button.json",
+    "https://brutalui.dev/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/newsletter.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\nimport { Input } from \"@/components/ui/input\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype NewsletterProps = {\n  title?: string\n  description?: string\n  placeholder?: string\n  buttonLabel?: string\n  className?: string\n}\n\nexport default function Newsletter({\n  title = \"Stay in the loop.\",\n  description = \"Get BrutalUI updates, new blocks, and bold UI tips.\",\n  placeholder = \"you@brand.com\",\n  buttonLabel = \"Join the list\",\n  className,\n}: NewsletterProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-center\">\n        <div className=\"space-y-3\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </div>\n        <form className=\"flex flex-col gap-3 sm:flex-row\">\n          <Input placeholder={placeholder} type=\"email\" />\n          <Button type=\"submit\">{buttonLabel}</Button>\n        </form>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/newsletter.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

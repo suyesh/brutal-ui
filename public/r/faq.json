@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq",
+  "title": "FAQ",
+  "registryDependencies": [
+    "https://brutalui.dev/r/accordion.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/faq.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype FaqItem = {\n  question: string\n  answer: string\n}\n\ntype FaqProps = {\n  title?: string\n  description?: string\n  items?: FaqItem[]\n  className?: string\n}\n\nconst DEFAULT_ITEMS: FaqItem[] = [\n  {\n    question: \"Is BrutalUI free to use?\",\n    answer:\n      \"Yes. The core library and marketing blocks are free and open-source.\",\n  },\n  {\n    question: \"Can I customize the colors?\",\n    answer:\n      \"Absolutely. The entire system runs on CSS variables, so any palette works.\",\n  },\n  {\n    question: \"Is this tied to a specific framework?\",\n    answer:\n      \"The components are React-first, but you can adapt them for any stack.\",\n  },\n]\n\nexport default function Faq({\n  title = \"Frequently asked, boldly answered.\",\n  description = \"Quick answers for the most common BrutalUI questions.\",\n  items = DEFAULT_ITEMS,\n  className,\n}: FaqProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"grid gap-10 lg:grid-cols-[0.8fr_1.2fr]\">\n        <div className=\"space-y-4\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </div>\n        <Accordion type=\"single\" collapsible className=\"w-full\">\n          {items.map((item) => (\n            <AccordionItem\n              key={item.question}\n              value={item.question}\n              className=\"border-2 border-border shadow-shadow\"\n            >\n              <AccordionTrigger className=\"text-left\">\n                {item.question}\n              </AccordionTrigger>\n              <AccordionContent>{item.answer}</AccordionContent>\n            </AccordionItem>\n          ))}\n        </Accordion>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/faq.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

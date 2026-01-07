@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-picker",
+  "title": "Theme picker",
+  "files": [
+    {
+      "path": "src/components/blocks/theme-picker.tsx",
+      "content": "import PalettePicker from \"@/components/app/palette-picker\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype ThemePickerProps = {\n  title?: string\n  description?: string\n  className?: string\n}\n\nexport default function ThemePicker({\n  title = \"Pick a vibe\",\n  description = \"Switch palettes instantly to match the mood of your brand.\",\n  className,\n}: ThemePickerProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"space-y-6\">\n        <header className=\"space-y-2\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </header>\n        <PalettePicker className=\"w-full max-w-md\" />\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/theme-picker.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

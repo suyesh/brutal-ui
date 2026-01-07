@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline",
+  "title": "Timeline",
+  "files": [
+    {
+      "path": "src/components/blocks/timeline.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\ntype TimelineStep = {\n  title: string\n  description: string\n}\n\ntype TimelineProps = {\n  title?: string\n  description?: string\n  steps?: TimelineStep[]\n  className?: string\n}\n\nconst DEFAULT_STEPS: TimelineStep[] = [\n  {\n    title: \"Pick a vibe\",\n    description: \"Choose a palette that matches your brand energy.\",\n  },\n  {\n    title: \"Drop the blocks\",\n    description: \"Copy the blocks you need and customize the props.\",\n  },\n  {\n    title: \"Ship fast\",\n    description: \"Launch bold layouts without losing speed.\",\n  },\n]\n\nexport default function Timeline({\n  title = \"Your brutalist build flow.\",\n  description = \"A simple timeline to highlight steps, milestones, or onboarding.\",\n  steps = DEFAULT_STEPS,\n  className,\n}: TimelineProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"space-y-8\">\n        <header className=\"max-w-2xl space-y-3\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </header>\n        <ol className=\"grid gap-4 md:grid-cols-3\">\n          {steps.map((step, index) => (\n            <li\n              key={step.title}\n              className=\"relative rounded-base border-2 border-border bg-background p-6 shadow-shadow\"\n            >\n              <div className=\"mb-4 flex size-10 items-center justify-center rounded-base border-2 border-border bg-main text-main-foreground font-heading\">\n                {index + 1}\n              </div>\n              <h3 className=\"font-heading text-lg\">{step.title}</h3>\n              <p className=\"mt-2 text-sm text-muted-foreground\">\n                {step.description}\n              </p>\n            </li>\n          ))}\n        </ol>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/timeline.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

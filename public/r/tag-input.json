@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tag-input",
+  "title": "Tag input",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://brutalui.dev/r/button.json",
+    "https://brutalui.dev/r/input.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/tag-input.tsx",
+      "content": " \"use client\"\n\nimport * as React from \"react\"\n\nimport { X } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\nimport { Input } from \"@/components/ui/input\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype TagInputProps = {\n  title?: string\n  description?: string\n  tags?: string[]\n  placeholder?: string\n  className?: string\n}\n\nconst DEFAULT_TAGS = [\"brutalist\", \"neon\", \"grid\", \"motion\"]\n\nexport default function TagInput({\n  title = \"Tag / Chip input\",\n  description = \"Use tags to classify content, filters, or product metadata.\",\n  tags = DEFAULT_TAGS,\n  placeholder = \"Add a tag\",\n  className,\n}: TagInputProps) {\n  const [items, setItems] = React.useState(tags)\n  const [value, setValue] = React.useState(\"\")\n\n  const addTag = () => {\n    const next = value.trim()\n    if (!next || items.includes(next)) return\n    setItems((prev) => [...prev, next])\n    setValue(\"\")\n  }\n\n  const removeTag = (tag: string) => {\n    setItems((prev) => prev.filter((item) => item !== tag))\n  }\n\n  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {\n    if (event.key === \"Enter\" || event.key === \",\") {\n      event.preventDefault()\n      addTag()\n    }\n  }\n\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"space-y-6\">\n        <header className=\"space-y-2\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </header>\n        <div className=\"rounded-base border-2 border-border bg-background p-4 shadow-shadow\">\n          <div className=\"flex flex-wrap gap-2\">\n            {items.map((tag) => (\n              <div\n                key={tag}\n                className=\"flex items-center gap-2 rounded-base border-2 border-border bg-main px-3 py-1 text-sm text-main-foreground\"\n              >\n                <span>{tag}</span>\n                <button\n                  type=\"button\"\n                  aria-label={`Remove ${tag}`}\n                  onClick={() => removeTag(tag)}\n                >\n                  <X className=\"size-3\" />\n                </button>\n              </div>\n            ))}\n            <Input\n              className=\"min-w-[140px] border-dashed\"\n              placeholder={placeholder}\n              value={value}\n              onChange={(event) => setValue(event.target.value)}\n              onKeyDown={onKeyDown}\n            />\n            <Button size=\"sm\" variant=\"reverse\" type=\"button\" onClick={addTag}>\n              Add\n            </Button>\n          </div>\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/tag-input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-simple",
+  "title": "Footer simple",
+  "files": [
+    {
+      "path": "src/components/blocks/footer-simple.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\ntype FooterSimpleProps = {\n  brand?: string\n  description?: string\n  links?: { label: string; href: string }[]\n  className?: string\n}\n\nconst DEFAULT_LINKS = [\n  { label: \"Docs\", href: \"/docs\" },\n  { label: \"Components\", href: \"/docs/accordion\" },\n  { label: \"Changelog\", href: \"/docs/changelog\" },\n]\n\nexport default function FooterSimple({\n  brand = \"BrutalUI\",\n  description = \"A brutalist component library for bold interfaces.\",\n  links = DEFAULT_LINKS,\n  className,\n}: FooterSimpleProps) {\n  return (\n    <footer\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"flex flex-col gap-6 md:flex-row md:items-center md:justify-between\">\n        <div className=\"space-y-2\">\n          <p className=\"font-heading text-xl\">{brand}</p>\n          <p className=\"text-sm text-muted-foreground\">{description}</p>\n        </div>\n        <div className=\"flex flex-wrap gap-4 text-sm font-heading\">\n          {links.map((link) => (\n            <a key={link.label} href={link.href} className=\"underline\">\n              {link.label}\n            </a>\n          ))}\n        </div>\n      </div>\n    </footer>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/footer-simple.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

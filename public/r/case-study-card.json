@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "case-study-card",
+  "title": "Case study card",
+  "registryDependencies": [
+    "https://brutalui.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/blocks/case-study-card.tsx",
+      "content": "import { Button } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype CaseStudyCardProps = {\n  title?: string\n  summary?: string\n  category?: string\n  metrics?: { label: string; value: string }[]\n  imageUrl?: string\n  href?: string\n  className?: string\n}\n\nconst DEFAULT_METRICS = [\n  { label: \"Conversion\", value: \"+28%\" },\n  { label: \"Launch time\", value: \"3 weeks\" },\n]\n\nexport default function CaseStudyCard({\n  title = \"Glowline rebrand launch\",\n  summary = \"A brutal refresh that doubled engagement and tightened the narrative.\",\n  category = \"Case study\",\n  metrics = DEFAULT_METRICS,\n  imageUrl = \"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80\",\n  href = \"/docs\",\n  className,\n}: CaseStudyCardProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background p-6 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"grid gap-6 lg:grid-cols-[1.2fr_0.8fr]\">\n        <div className=\"space-y-4\">\n          <p className=\"text-xs uppercase tracking-wide text-muted-foreground\">\n            {category}\n          </p>\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{summary}</p>\n          <div className=\"grid gap-3 sm:grid-cols-2\">\n            {metrics.map((metric) => (\n              <div\n                key={metric.label}\n                className=\"rounded-base border-2 border-border bg-background px-4 py-3\"\n              >\n                <p className=\"text-xs uppercase tracking-wide text-muted-foreground\">\n                  {metric.label}\n                </p>\n                <p className=\"font-heading text-xl\">{metric.value}</p>\n              </div>\n            ))}\n          </div>\n          <Button asChild>\n            <a href={href}>Read the case study</a>\n          </Button>\n        </div>\n        <div className=\"overflow-hidden rounded-base border-2 border-border bg-background\">\n          <img\n            className=\"h-full w-full object-cover\"\n            src={imageUrl}\n            alt={title}\n            loading=\"lazy\"\n          />\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/case-study-card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

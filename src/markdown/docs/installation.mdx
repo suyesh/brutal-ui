@@ -1,0 +1,62 @@
+---
+title: Installation
+description: Learn how to install BrutalUI components.
+---
+
+## 1. Install Tailwind CSS
+
+Follow the official Tailwind CSS installation guide: <a target="_blank" href="https://tailwindcss.com/docs/installation">tailwindcss.com/docs/installation</a>.
+
+## 2. Initialize shadcn
+
+As explained in introduction, most of these components are based on <a target="_blank" href="https://ui.shadcn.com/">Shadcn UI</a>. 
+
+Follow the shadcn/ui CLI init guide: <a href='https://ui.shadcn.com/docs/cli#init' target='_blank'>ui.shadcn.com/docs/cli#init</a>.
+
+<Warning className="mt-8 mb-4" description="BrutalUI doesn't support utility class components anymore, only css variables components. Also, it doesn't matter which baseColor you choose, because it doesn't change the styling." />
+
+## 3. Add styling
+
+Customize your vibe and copy the styling into your `globals.css`:
+
+<div className="not-prose mt-4">
+  <Styling />
+</div>
+
+## 4. Install components
+
+### Install via Shadcn cli
+
+Just choose desired component variant and desired package manager, copy cli command to your terminal and you're good to go. 
+If there is no shadcn cli command on the component page you'll have to install the component manually.
+
+### Install manually
+
+In this docs below each component's name you'll have the shadcn docs link for that component.
+
+e.g. You want to install shadcn button component. You'll navigate to <a target='_blank' href='/components/button'>button page</a>, click on the shadcn docs
+link and install the button component like it's shown in the docs.
+
+After you're done you'll come back to BrutalUI button page, and copy button component to your project inside `components/ui/button.tsx``
+(this is the default component path) or your custom component path.
+
+Keep in mind that BrutalUI components can have different variants than default shadcn components.
+
+### Other components
+
+If the shadcn docs link is not present on the component's page, just copy the component and read the instructions if there are any.
+
+## Example: Button install
+
+Here is a concrete example using the Button component:
+
+<Installation component="button">
+  ```tsx file=<rootDir>/src/components/ui/button.tsx
+  ```
+</Installation>
+
+## Example: Button usage
+<ComponentPreview component="button" example="default">
+```tsx file=<rootDir>/src/examples/ui/button/index.tsx
+  ```
+</ComponentPreview>

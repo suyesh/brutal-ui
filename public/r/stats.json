@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats",
+  "title": "Stats",
+  "files": [
+    {
+      "path": "src/components/blocks/stats.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\ntype StatItem = {\n  value: string\n  label: string\n  description?: string\n}\n\ntype StatsProps = {\n  title?: string\n  description?: string\n  stats?: StatItem[]\n  className?: string\n}\n\nconst DEFAULT_STATS: StatItem[] = [\n  {\n    value: \"60+\",\n    label: \"Components\",\n    description: \"Shipping-ready primitives\",\n  },\n  {\n    value: \"8\",\n    label: \"Vibes\",\n    description: \"Handpicked palettes\",\n  },\n  {\n    value: \"2x\",\n    label: \"Faster\",\n    description: \"Less UI churn\",\n  },\n]\n\nexport default function Stats({\n  title = \"Numbers that speak loud.\",\n  description = \"Bring quick proof to the top of the funnel with bold metrics.\",\n  stats = DEFAULT_STATS,\n  className,\n}: StatsProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full border-2 border-border bg-secondary-background px-6 py-10 shadow-shadow\",\n        className,\n      )}\n    >\n      <div className=\"space-y-8\">\n        <header className=\"max-w-2xl space-y-3\">\n          <h2 className=\"font-heading text-2xl sm:text-3xl\">{title}</h2>\n          <p className=\"text-foreground sm:text-lg\">{description}</p>\n        </header>\n        <div className=\"grid gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n          {stats.map((stat) => (\n            <div\n              key={stat.label}\n              className=\"rounded-base border-2 border-border bg-background p-6 shadow-shadow\"\n            >\n              <p className=\"font-heading text-3xl\">{stat.value}</p>\n              <p className=\"mt-2 text-sm uppercase tracking-wide text-muted-foreground\">\n                {stat.label}\n              </p>\n              {stat.description && (\n                <p className=\"mt-3 text-sm text-foreground\">\n                  {stat.description}\n                </p>\n              )}\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/blocks/stats.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
