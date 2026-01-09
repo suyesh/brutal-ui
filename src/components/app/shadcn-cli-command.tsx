@@ -1,16 +1,38 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 import { sharedComponents } from "./mdx-components"
 import { Pre } from "./pre"
 
 export default function ShadcnCliCommand({ component }: { component: string }) {
   const { Tabs, TabsContent, TabsList, TabsTrigger } = sharedComponents
 
+  const [selectedCommand, setSelectedCommand] = useState("pnpm")
+
   const pnpmCommand = `pnpm dlx shadcn@latest add https://brutalui.dev/r/${component}.json`
   const npmCommand = `npx shadcn@latest add https://brutalui.dev/r/${component}.json`
   const yarnCommand = `npx shadcn@latest add https://brutalui.dev/r/${component}.json`
   const bunCommand = `bunx --bun shadcn@latest add https://brutalui.dev/r/${component}.json`
 
+  const handleCommandChange = (value: string) => {
+    setSelectedCommand(value)
+    localStorage.setItem("cli-command", value)
+  }
+
+  useEffect(() => {
+    const storedCommand = localStorage.getItem("cli-command")
+    if (storedCommand) {
+      setSelectedCommand(storedCommand)
+    }
+  }, [])
+
   return (
-    <Tabs defaultValue="pnpm" className="w-full">
+    <Tabs
+      value={selectedCommand}
+      onValueChange={handleCommandChange}
+      className="w-full"
+    >
       <TabsList className="grid w-full grid-cols-4">
         <TabsTrigger value="pnpm">pnpm</TabsTrigger>
         <TabsTrigger value="npm">npm</TabsTrigger>
