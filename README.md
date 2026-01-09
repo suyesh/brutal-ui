@@ -1,5 +1,7 @@
 # BrutalUI
 
+[https://brutalui.dev](https://brutalui.dev)
+
 <a href="https://brutalui.dev/docs">
   <img src="public/preview.png" alt="preview">
 </a>

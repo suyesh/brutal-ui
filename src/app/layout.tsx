@@ -107,20 +107,6 @@ export default function RootLayout({
             {children}
             <footer className="border-t-4 border-border bg-secondary-background px-5 py-6 text-center text-sm sm:text-base">
               <div>
-                Made with{" "}
-                <span aria-hidden="true" className="text-accent">
-                  ❤
-                </span>{" "}
-                <span className="sr-only">love</span> by{" "}
-                <a
-                  className="font-heading underline"
-                  href="https://www.linkedin.com/in/suyesh-bhandari/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @suyesh
-                </a>{" "}
-                —{" "}
                 <a
                   className="font-heading underline"
                   href="https://github.com/suyesh/brutal-ui"
